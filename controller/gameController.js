@@ -1,9 +1,19 @@
 const Game = require("../models").game
 module.exports = {
-    async getAllUsers(req, res) {
+    async getAllGames(req, res) {
+        try {
+            const gameCollection = await Game.findAll()
+            res.status(201).send(gameCollection)
+        } catch (e) {
+            console.log(e)
+            res.status(500).send(e)
+        }
+    },
+    async getGameById(req, res) {
+        let gameId = req.param.id
         try {
             const gameCollection = await Game.findOne({
-                id: 1
+                id: gameId
             })
             res.status(201).send(gameCollection)
         } catch (e) {
@@ -11,7 +21,7 @@ module.exports = {
             res.status(500).send(e)
         }
     },
-    async create(req, res) {
+    /*async create(req, res) {
         try {
             const gameCollection = await Game.create({
                 email: req.body.email,
@@ -21,7 +31,7 @@ module.exports = {
             console.log(e)
             res.status(400).send(e)
         }
-    },/*
+    },
     async update(req, res) {
         try {
             const gameCollection = await User.find({
