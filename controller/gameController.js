@@ -10,10 +10,12 @@ module.exports = {
         }
     },
     async getGameById(req, res) {
-        let gameId = req.param.id
+        let gameId = req.params.id
         try {
             const gameCollection = await Game.findOne({
-                id: gameId
+                where: {
+                    id: gameId
+                }
             })
             res.status(201).send(gameCollection)
         } catch (e) {
