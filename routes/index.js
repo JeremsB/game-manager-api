@@ -6,7 +6,7 @@ module.exports = app => {
     app.get("/game/console/:id", gameController.getAllGamesByConsole)
     app.get("/game/:id", gameController.getGameById)
     app.post("/game", gameController.createGame)
-    //app.put("/game/:id", gameController.updateGame)
+    app.put("/game/:id", gameController.updateGame)
     //app.delete("/game/:id", gameController.deleteGame)
 
     /*app.get("/console", consoleController.getAllConsoles)

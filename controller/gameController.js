@@ -65,23 +65,30 @@ module.exports = {
             console.log(e)
             res.status(400).send(e)
         }
-    },/*
+    },
     async updateGame(req, res) {
         try {
-            const gameCollection = await User.find({
-                id: req.params.userId,
+            const gameCollection = await Game.findOne({
+                where: {
+                    id: req.params.id
+                }
             })
-            if (userCollection) {
-                const updatedUser = await User.update({
-                    id: req.body.email,
-                })
-                res.status(201).send(updatedUser)
+            let values = {
+                name: req.body.name,
+                picture: req.body.picture,
+                category: req.body.category,
+                console: req.body.console,
+                description: req.body.description };
+            let where = { where: { id: req.params.id }};
+            if (gameCollection) {
+                const updatedGame = await Game.update(values,where)
+                res.status(201).send(updatedGame)
             } else {
-                res.status(404).send("User Not Found")
+                res.status(404).send("Game Not Found")
             }
         } catch (e) {
             console.log(e)
             res.status(500).send(e)
         }
-    },*/
+    },
 }
