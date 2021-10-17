@@ -1,8 +1,19 @@
 const Game = require("../models").game
+const Category = require("../models").category
+const Console = require("../models").console
 module.exports = {
     async getAllGames(req, res) {
         try {
-            const gameCollection = await Game.findAll()
+            const gameCollection = await Game.findAll({
+                include: [
+                    {
+                        model: Category, as: "game-category"
+                    },
+                    {
+                        model: Console, as: "game-console"
+                    }
+                ],
+            })
             res.status(201).send(gameCollection)
         } catch (e) {
             console.log(e)
