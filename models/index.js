@@ -1,8 +1,11 @@
 'use strict';
-
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
+const _category = require("./category");
+const {DataTypes} = require("sequelize");
+const _console = require("./console");
+const _game = require("./game");
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
@@ -33,5 +36,10 @@ Object.keys(db).forEach(modelName => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
+db.game.belongsTo(db.category, { as: "gameCategory", foreignKey: "category"});
+db.category.hasMany(db.game, { as: "games", foreignKey: "category"});
+db.game.belongsTo(db.console, { as: "gameConsole", foreignKey: "console"});
+db.console.hasMany(db.game, { as: "games", foreignKey: "console"});
 
 module.exports = db;

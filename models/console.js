@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(100),
       allowNull: true
     },
-    name: {
+    label: {
       type: DataTypes.STRING(100),
       allowNull: true
     }
