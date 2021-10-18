@@ -5,12 +5,15 @@ module.exports = {
     async getAllGames(req, res) {
         try {
             const gameCollection = await Game.findAll({
+                attributes: ['id', 'name', 'picture', 'description'],
                 include: [
                     {
-                        model: Category, as: "game-category"
+                        attributes: ['label'],
+                        model: Category, as: "gameCategory"
                     },
                     {
-                        model: Console, as: "game-console"
+                        attributes: ['label', 'brand'],
+                        model: Console, as: "gameConsole"
                     }
                 ],
             })

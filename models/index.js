@@ -37,9 +37,9 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-db.game.belongsTo(db.category, { as: "game-category", foreignKey: "category"});
+db.game.belongsTo(db.category, { as: "gameCategory", foreignKey: "category"});
 db.category.hasMany(db.game, { as: "games", foreignKey: "category"});
-db.game.belongsTo(db.console, { as: "game-console", foreignKey: "console"});
+db.game.belongsTo(db.console, { as: "gameConsole", foreignKey: "console"});
 db.console.hasMany(db.game, { as: "games", foreignKey: "console"});
 
 module.exports = db;
