@@ -1,5 +1,7 @@
 //index.js
 const gameController = require("../controller").game
+const categoryController = require("../controller").category
+const consoleController = require("../controller").console
 module.exports = app => {
     app.get("/game", gameController.getAllGames)
     app.get("/game/category/:id", gameController.getAllGamesByCategory)
@@ -9,16 +11,16 @@ module.exports = app => {
     app.put("/game/:id", gameController.updateGame)
     //app.delete("/game/:id", gameController.deleteGame)
 
-    /*app.get("/console", consoleController.getAllConsoles)
-    app.get("/console/brand/:id", consoleController.getAllConsolesByBrand)
+    app.get("/console", consoleController.getAllConsoles)
+    //app.get("/console/brand/:id", consoleController.getAllConsolesByBrand)
     app.get("/console/:id", consoleController.getConsoleById)
-    app.post("/console", consoleController.createConsole)
+    /*app.post("/console", consoleController.createConsole)
     app.put("/console/:id", consoleController.updateConsole)
-    app.delete("/console/:id", consoleController.deleteConsole)
+    app.delete("/console/:id", consoleController.deleteConsole)*/
 
     app.get("/category", categoryController.getAllCategories)
     app.get("/category/:id", categoryController.getCategoryById)
-    app.post("/category", categoryController.createCategory)
+    /*app.post("/category", categoryController.createCategory)
     app.put("/category/:id", categoryController.updateCategory)
     app.delete("/category/:id", categoryController.deleteCategory)*/
 }
